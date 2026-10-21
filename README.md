@@ -1,58 +1,33 @@
 # pfterm - Terminal for Punyforth Devices
 
-A terminal application for interacting with Punyforth devices through serial communication.
-
-## Description
-
-pfterm is a command-line terminal application designed specifically for communicating with Punyforth devices. It provides a simple interface for serial communication with configurable baud rates and convenient hotkeys for common operations.
+A command-line terminal for communicating with Punyforth devices over a serial connection. It supports interactive input, sending a file line by line, and resetting the device via RTS.
 
 ## Installation
 
+Requires Python 3 and the packages listed in `requirements.txt` (`pyserial` and `prompt_toolkit`). Install them with:
+
 ```bash
-# Add installation instructions here
+python3 -m pip install -r requirements.txt
 ```
 
 ## Usage
 
 ```bash
-pfterm [-h] [--baudrate BAUDRATE] port
+python3 pfterm.py [--baudrate BAUDRATE] PORT
 ```
 
-### Arguments
+`PORT` is the serial port to connect to (for example, `/dev/ttyUSB0`). The baud rate defaults to `115200`.
 
-- `port`: Serial port to connect to (required)
-- `--baudrate`: Baud rate for serial communication (default: 115200)
-- `-h`: Display help message
+Run `python3 pfterm.py --help` to see the command-line options.
 
 ### Hotkeys
 
-| Key Combination | Action |
-|----------------|---------|
-| Ctrl+A | Input from file |
-| Ctrl+Z | Hardware reset via RTS line |
-| Ctrl+Q or Ctrl+E | Exit application |
-
-## Features
-
-- Serial communication with Punyforth devices
-- Configurable baud rate
-- File input capability
-- Hardware reset functionality
-- Simple and intuitive interface
-
-## Requirements
-
-- Python 3.x
-- pyserial library
+| Key combination | Action |
+|-----------------|--------|
+| Ctrl+A | Enter a filename and send the file line by line |
+| Ctrl+Z | Pulse the RTS line to reset the device |
+| Ctrl+Q or Ctrl+E, then Enter | Exit the application |
 
 ## License
 
-[Add license information here]
-
-## Contributing
-
-[Add contribution guidelines here]
-
-## Author
-
-[Add author information here]
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
