@@ -4,10 +4,15 @@ from multiprocessing import Process, Value
 from prompt_toolkit import PromptSession
 from prompt_toolkit.history import FileHistory
 from prompt_toolkit.key_binding import KeyBindings
+
+__version__ = '1.0.0'
+
 histfile = os.path.join(os.path.expanduser("~"), ".pf_history")
 session = PromptSession(history=FileHistory(histfile))
 
-parser = argparse.ArgumentParser(description='Flash punyforth binaries and forth code')
+parser = argparse.ArgumentParser(
+    description=f'pfterm {__version__} - Interactive serial terminal for Punyforth devices')
+parser.add_argument('--version', action='version', version=f'%(prog)s {__version__}')
 parser.add_argument('port',help='tty port device')
 parser.add_argument('--baudrate', default='115200')
 args = parser.parse_args()
